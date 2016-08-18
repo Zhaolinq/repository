@@ -19,16 +19,9 @@ public class Rental {
     }
     
     int getFrequestRenterPoint() {
-        int frequestRenterPoints = 1;
-        
-        if((movie.getPriceCode() == Movie.NEW_RELEASE)
-                && getDayRented() > 1) {
-            frequestRenterPoints ++;
-        }
-        return frequestRenterPoints;
+        return movie.getFrequentRenterPoints(getDayRented());
     }
-    
     public double getCharge() {
-        return getMovie().getCharge(getDayRented());
+        return movie.getCharge(getDayRented());
     }
 }

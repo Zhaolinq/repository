@@ -49,9 +49,7 @@ public class Customer {
         int totalAmount = 0;
         Enumeration<Rental> rentals = _rentals.elements();
         while(rentals.hasMoreElements()) {
-            Rental each = rentals.nextElement();
-            totalAmount += each.getCharge();
-            totalAmount += each.getMovie().getCharge(each.getDayRented());
+            totalAmount += rentals.nextElement().getCharge();
         }
         return totalAmount;
     }
