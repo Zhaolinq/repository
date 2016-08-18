@@ -25,7 +25,8 @@ public class Customer {
         while(rentals.hasMoreElements()) {
             Rental each = rentals.nextElement();
             
-            result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(each.getCharge()) + "\n";
+            result += "\t" + each.getMovie().getTitle() + "\t" 
+            + String.valueOf(each.getMovie().getCharge(each.getDayRented())) + "\n";
         }
         
         result += "Amount owed is " + String.valueOf(getTotalAmount()) + "\n";
@@ -50,6 +51,7 @@ public class Customer {
         while(rentals.hasMoreElements()) {
             Rental each = rentals.nextElement();
             totalAmount += each.getCharge();
+            totalAmount += each.getMovie().getCharge(each.getDayRented());
         }
         return totalAmount;
     }

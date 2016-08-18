@@ -21,4 +21,32 @@ public class Movie {
     public void setPriceCode(int priceCode) {
         this.priceCode = priceCode;
     }
+    double getCharge(Rental rental) {
+        int dayRented = rental.getDayRented();
+        return getCharge(dayRented);
+    }
+    
+    double getCharge(int dayRented) {
+        double result = 0;
+        switch(priceCode) {
+        case Movie.REGULAR:
+            result += 2; 
+            if(dayRented > 2) {
+                result += (dayRented - 2) * 1.5;
+            }
+            break;
+            
+        case Movie.NEW_RELEASE :
+            result += dayRented * 3;
+            break;
+            
+        case Movie.CHILDRENS :
+            result += 1.5;
+            if(dayRented > 3) {
+                result += (dayRented - 3) * 1.5;
+            }
+            break;
+        }
+        return result;
+    }
 }
