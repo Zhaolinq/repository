@@ -25,10 +25,7 @@ public class Customer {
         Enumeration<Rental> rentals = _rentals.elements();
         String result = "Rental record for " + getName() + "\n";
         while(rentals.hasMoreElements()) {
-            double thisAmount = 0;
             Rental each = rentals.nextElement();
-            
-            thisAmount = each.getCharge();
             
             frequestRenterPoints ++;
             
@@ -37,8 +34,8 @@ public class Customer {
                 frequestRenterPoints ++;
             }
             
-            result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "\n";
-            totalAmount += thisAmount;
+            result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(each.getCharge()) + "\n";
+            totalAmount += each.getCharge();
         }
         
         result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
